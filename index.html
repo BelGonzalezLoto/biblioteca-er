@@ -233,11 +233,11 @@
                     <text class="relation-text" x="400" y="495">REALIZA</text>
                 </g>
 
-                <!-- RELACIÓN INCLUYE -->
+                <!-- RELACIÓN INCLUYE (Reposicionada entre LIBRO y PRESTAMO) -->
                 <g id="incluye-group" onclick="showInfo('incluye')" style="cursor: pointer;">
                     <polygon id="incluye-diamond" class="relation-diamond" 
-                             points="800,460 850,490 800,520 750,490"/>
-                    <text class="relation-text" x="800" y="495">INCLUYE</text>
+                             points="1040,280 1090,310 1040,340 990,310"/>
+                    <text class="relation-text" x="1040" y="315">INCLUYE</text>
                 </g>
 
                 <!-- LÍNEAS DE CONEXIÓN -->
@@ -251,29 +251,35 @@
                 <!-- REALIZA - PRESTAMO -->
                 <line class="connection-line" x1="450" y1="490" x2="950" y2="460"/>
                 
-                <!-- PRESTAMO - INCLUYE -->
-                <line class="connection-line" x1="950" y1="480" x2="850" y2="490"/>
-                <!-- INCLUYE - LIBRO -->
-                <line class="connection-line" x1="750" y1="490" x2="950" y2="200"/>
+                <!-- LIBRO - INCLUYE (línea recta hacia abajo) -->
+                <line class="connection-line" x1="1040" y1="200" x2="1040" y2="280"/>
+                <!-- INCLUYE - PRESTAMO (línea recta hacia abajo) -->
+                <line class="connection-line" x1="1040" y1="340" x2="1040" y2="400"/>
 
                 <!-- CARDINALIDADES -->
+                <!-- AUTOR - ESCRIBE -->
                 <circle cx="280" cy="150" r="15" fill="#2ecc71"/>
                 <text class="cardinality-text" x="280" y="157" text-anchor="middle">M</text>
                 
+                <!-- ESCRIBE - LIBRO -->
                 <circle cx="900" cy="150" r="15" fill="#2ecc71"/>
                 <text class="cardinality-text" x="900" y="157" text-anchor="middle">N</text>
                 
+                <!-- USUARIO - REALIZA -->
                 <circle cx="280" cy="470" r="15" fill="#2ecc71"/>
                 <text class="cardinality-text" x="280" y="477" text-anchor="middle">1</text>
                 
-                <circle cx="500" cy="480" r="15" fill="#2ecc71"/>
-                <text class="cardinality-text" x="500" y="487" text-anchor="middle">N</text>
+                <!-- REALIZA - PRESTAMO -->
+                <circle cx="900" cy="470" r="15" fill="#2ecc71"/>
+                <text class="cardinality-text" x="900" y="477" text-anchor="middle">N</text>
                 
-                <circle cx="900" cy="490" r="15" fill="#2ecc71"/>
-                <text class="cardinality-text" x="900" y="497" text-anchor="middle">N</text>
+                <!-- LIBRO - INCLUYE -->
+                <circle cx="1040" cy="240" r="15" fill="#2ecc71"/>
+                <text class="cardinality-text" x="1040" y="247" text-anchor="middle">1</text>
                 
-                <circle cx="900" cy="220" r="15" fill="#2ecc71"/>
-                <text class="cardinality-text" x="900" y="227" text-anchor="middle">1</text>
+                <!-- INCLUYE - PRESTAMO -->
+                <circle cx="1040" cy="370" r="15" fill="#2ecc71"/>
+                <text class="cardinality-text" x="1040" y="377" text-anchor="middle">N</text>
             </svg>
         </div>
 
@@ -291,7 +297,7 @@
             <p><strong>Tipo:</strong> Entidad Fuerte</p>
             <p><strong>Clave Primaria:</strong> ISBN</p>
             <p><strong>Descripción:</strong> Representa los libros disponibles en la biblioteca.</p>
-            <p><strong>Relaciones:</strong> Puede ser escrito por múltiples autores (M:N) y puede ser incluido en préstamos (1:N)</p>
+            <p><strong>Relaciones:</strong> Puede ser escrito por múltiples autores (M:N) y puede ser incluido en múltiples préstamos (1:N)</p>
         </div>
 
         <div class="info-panel" id="info-usuario">
@@ -328,11 +334,11 @@
         </div>
 
         <div class="info-panel" id="info-incluye">
-            <h3>📖 RELACIÓN: INCLUYE (N:1)</h3>
-            <p><strong>Entidades:</strong> PRÉSTAMO ↔ LIBRO</p>
-            <p><strong>Cardinalidad:</strong> Muchos a Uno</p>
-            <p><strong>Notación Chen:</strong> ◊——————□</p>
-            <p><strong>Significado:</strong> Múltiples préstamos pueden incluir el mismo libro (en diferentes momentos), pero cada préstamo incluye un solo libro.</p>
+            <h3>📖 RELACIÓN: INCLUYE (1:N)</h3>
+            <p><strong>Entidades:</strong> LIBRO ↔ PRÉSTAMO</p>
+            <p><strong>Cardinalidad:</strong> Uno a Muchos</p>
+            <p><strong>Notación Chen:</strong> □——————◊</p>
+            <p><strong>Significado:</strong> Un libro puede ser incluido en múltiples préstamos (a lo largo del tiempo), pero cada préstamo incluye un solo libro.</p>
         </div>
 
         <div class="info-panel" id="info-notaciones">
